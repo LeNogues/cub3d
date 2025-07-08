@@ -10,7 +10,7 @@ SRC=    src/main.c \
 		src/parsing/verif_pre_open.c \
 		src/parsing/open_file.c \
 		src/parsing/file_is_valid.c \
-		src/parsing/line_is_valid.c \
+		src/parsing/setup_valid.c \
 		src/utils/error_message.c \
 		src/utils/close_all_fd.c \
 		src/utils/init_fd.c
