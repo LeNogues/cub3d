@@ -3,25 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   setup_valid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 19:02:33 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/08 12:08:30 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/16 21:36:41 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
+static int	skip_white(char *str, int i)
+{
+	while (str[i] == ' ')
+		i++;
+	return (i);
+}
+
+static int	parse_one_value(char *str, int *i, int *value)
+{
+	*i = skip_white(str, *i);
+	if (str[*i] < '0' || str[*i] > '9')
+		return (error_message("Bad syntax for color\n"));
+	*value = ft_atoi(&str[*i]);
+	if (*value < 0 || *value > 255)
+		return (error_message("Bad value for color, interval is [0, 255]\n"));
+	while (str[*i] >= '0' && str[*i] <= '9')
+		(*i)++;
+	return (1);
+}
+
+static void	apply_color_shift(int *color, int value, int passage)
+{
+	if (passage == 0)
+		*color |= (value << 16);
+	else if (passage == 1)
+		*color |= (value << 8);
+	else
+		*color |= value;
+}
+
+static int	check_separator(char *str, int *i, int passage)
+{
+	if (passage < 2)
+	{
+		*i = skip_white(str, *i);
+		if (str[*i] != ',')
+			return (error_message("Expected a comma separator\n"));
+		(*i)++;
+	}
+	return (1);
+}
+
 int	convert_rgb_to_int(int *color, char *str)
 {
-	(void)color;
 	int i;
+	int value;
+	int passage;
 
 	i = 0;
-	while(str[i] == ' ')
-		i++;
-	if (str[i] == '\n')
-		return (error_message("need a color for floor or ceilling\n"));
+	passage = 0;
+	*color = 0;
+	while (passage < 3)
+	{
+		if (!parse_one_value(str, &i, &value))
+			return (0);
+		apply_color_shift(color, value, passage);
+		if (!check_separator(str, &i, passage))
+			return (0);
+		passage++;
+	}
+	i = skip_white(str, i);
+	if (str[i] != '\0' && str[i] != '\n')
+		return (error_message("Extra characters after RGB color\n"));
 	return (1);
 }
 
@@ -32,6 +85,8 @@ int	get_color(t_info *info, char *str)
 
 	i = 0;
 	result = 0;
+	if (info->color_ceilling != -1 && info->color_floor != -1)
+		return (2);
 	while(str[i] == ' ')
 		i++;
 	if (str[i] == 'F')
@@ -63,10 +118,9 @@ int	setup_valid(t_info *info)
 		else 
 			result = get_color(info, str);
 		if (result == 0 && str[0] != '\n')
-		{
-			printf("%s\n", str);
 			return (close_all_fd(info), 0);
-		}
+		else if (result == 2)
+			return (1);
 		free(str);
 	}
 	return (1);

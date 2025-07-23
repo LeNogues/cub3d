@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_is_valid.c                                    :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 19:01:15 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/19 19:43:09 by seb              ###   ########.fr       */
+/*   Created: 2025/07/19 19:43:26 by seb               #+#    #+#             */
+/*   Updated: 2025/07/19 19:45:01 by seb              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int	file_is_valid(t_info *info)
+int parse_map(t_info *info)
 {
-	if (!setup_valid(info))
-	{
-		close_fd(&info->fd_map);
-		return (0);
-	}
-	parse_map(info);
-	return (1);
+    
 }
