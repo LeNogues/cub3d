@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   skip_empty_line.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 11:48:59 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:07:11 by sle-nogu         ###   ########.fr       */
+/*   Created: 2025/07/30 12:39:10 by sle-nogu          #+#    #+#             */
+/*   Updated: 2025/07/30 12:39:32 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../cub3d.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-# include "header/parsing.h"
-# include "header/utils.h"
-# include "header/structure.h"
-# include "minilibx-linux/mlx.h"
-
-
-
-
-#endif
+char	*skip_empty_line(t_info *info)
+{
+	while (info->str[0] == '\n')
+	{
+		free(info->str);
+		info->str = get_next_line(info->fd_map);
+		if (!info->str)
+			return (0);
+	}
+	return (info->str);
+}

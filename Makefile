@@ -1,7 +1,7 @@
 NAME=cub3d
 LIBFTNAME=libft.a
 CC=cc
-CFLAGS=-Wall -Werror -Wextra -Ilibft -g3
+CFLAGS=-Wall -Werror -Wextra -Ilibft  $(INCLUDES) -g3
 LIBFLAGS= -lft -Llibft
 LIBFTDIR = ./libft
 
@@ -11,22 +11,42 @@ SRC=    src/main.c \
 		src/parsing/open_file.c \
 		src/parsing/file_is_valid.c \
 		src/parsing/setup_valid.c \
+		src/parsing/get_color.c \
+		src/parsing/parse_map.c \
+		src/parsing/map_is_closed.c \
+		src/parsing/reverse_map.c \
+		src/parsing/fill_with_one.c \
+		src/parsing/get_pos_player.c \
+		src/parsing/add_map_line.c \
 		src/utils/error_message.c \
 		src/utils/close_all_fd.c \
-		src/utils/init_fd.c
+		src/utils/init.c \
+		src/utils/close_mlx.c \
+		src/utils/skip_white.c \
+		src/utils/free_texture.c \
+		src/utils/free_linked_list.c \
+		src/utils/free_clean.c \
+		src/utils/skip_empty_line.c
 	
-
 OBJ_DIR=obj
 OBJS=$(SRC:%.c=$(OBJ_DIR)/%.o)
 
-# Create necessary directories for .o files
+MLX_DIR = ./minilibx-linux
+INCLUDES = -I$(MLX_DIR) -Iincludes
+
+LDFLAGS = -L$(MLX_DIR) -lmlx -lm -lX11 -lXext
+MLX = $(MLX_DIR)/libmlx.a
+
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
+$(NAME):$(MLX) $(OBJS)
 	@make -C $(LIBFTDIR)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFLAGS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFLAGS) $(MLX) -lXext -lX11 -lm
+
+$(MLX):
+	$(MAKE) -C $(MLX_DIR)
 
 clean:
 	@rm -f $(OBJS)

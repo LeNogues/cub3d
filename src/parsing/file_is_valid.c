@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_is_valid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seb <seb@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 19:01:15 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/19 19:43:09 by seb              ###   ########.fr       */
+/*   Updated: 2025/07/24 21:12:00 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@ int	file_is_valid(t_info *info)
 		close_fd(&info->fd_map);
 		return (0);
 	}
-	parse_map(info);
 	return (1);
 }

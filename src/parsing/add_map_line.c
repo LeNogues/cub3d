@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   add_map_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 11:53:28 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:38:27 by sle-nogu         ###   ########.fr       */
+/*   Created: 2025/07/30 12:40:52 by sle-nogu          #+#    #+#             */
+/*   Updated: 2025/07/30 12:41:15 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../cub3d.h"
 
-int	parsing(int argc, char **argv, t_info *info)
+int	add_map_line(t_link_map **head, t_link_map **current, char *str)
 {
-	if (!verif_pre_open(argc, argv))
+	t_link_map	*new_node;
+
+	new_node = malloc(sizeof(t_link_map));
+	if (!new_node)
 		return (0);
-	if (!open_file(argv[1], info))
+	new_node->value = ft_strdup(str);
+	new_node->next = NULL;
+	if (!new_node->value)
+	{
+		free(new_node);
 		return (0);
-	if (!file_is_valid(info))
-		return (0);
-	if (!parse_map(info, info->map))
-		return (0);
-	if (!map_is_closed(info->map->map))
-		return (0);
-	if (!reverse_map(info->map, info->map->map))
-		return (0);
-	get_pos_player(info, info->map->map);
-	fill_with_one(info->map->map);
+	}
+	if (*head == NULL)
+	{
+		*head = new_node;
+		*current = new_node;
+	}
+	else
+	{
+		(*current)->next = new_node;
+		*current = new_node;
+	}
 	return (1);
 }

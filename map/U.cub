@@ -1,13 +1,12 @@
-NO ./texture/north_text
-SO ./texture/south_text
-WE ./texture/west_text
-EA ./texture/east_text
-
+NO ./texture/north_text.xpm
+SO ./texture/south_text.xpm
+WE ./texture/west_text.xpm
+EA ./texture/east_text.xpm
 F 220,100,0
 C 225,30,0
 
 111   111
 101   101
 101111101
-100000001
+100N00001
 111111111

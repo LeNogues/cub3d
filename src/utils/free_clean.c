@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   free_clean.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 11:48:59 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:07:11 by sle-nogu         ###   ########.fr       */
+/*   Created: 2025/07/29 13:24:34 by sle-nogu          #+#    #+#             */
+/*   Updated: 2025/07/30 12:10:08 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../cub3d.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-# include "header/parsing.h"
-# include "header/utils.h"
-# include "header/structure.h"
-# include "minilibx-linux/mlx.h"
-
-
-
-
-#endif
+void	free_clean(t_info *info)
+{
+	close_mlx(info);
+	if (info->map->map)
+		free_tab(info->map->map);
+	free(info->map);
+	free(info);
+}

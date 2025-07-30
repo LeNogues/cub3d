@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   reverse_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 11:48:59 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:07:11 by sle-nogu         ###   ########.fr       */
+/*   Created: 2025/07/29 13:50:22 by sle-nogu          #+#    #+#             */
+/*   Updated: 2025/07/30 12:08:53 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../cub3d.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-# include "header/parsing.h"
-# include "header/utils.h"
-# include "header/structure.h"
-# include "minilibx-linux/mlx.h"
+int	reverse_map(t_map *map, char **map_patern)
+{
+	int		i;
+	int		row_bis;
+	int		row;
+	char	tmp;
 
-
-
-
-#endif
+	row = 0;
+	row_bis = map->map_height - 1;
+	while (row <= (int)map->map_height / 2)
+	{
+		i = 0;
+		while (map_patern[row][i])
+		{
+			tmp = map_patern[row][i];
+			map_patern[row][i] = map_patern[row_bis][i];
+			map_patern[row_bis][i] = tmp;
+			i++;
+		}
+		row++;
+		row_bis--;
+	}
+	return (1);
+}

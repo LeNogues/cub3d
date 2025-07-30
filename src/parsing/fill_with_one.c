@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   fill_with_one.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 11:48:59 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:07:11 by sle-nogu         ###   ########.fr       */
+/*   Created: 2025/07/29 18:23:03 by sle-nogu          #+#    #+#             */
+/*   Updated: 2025/07/30 12:08:20 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+void	fill_with_one(char **map)
+{
+	int	i;
+	int	j;
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-# include "header/parsing.h"
-# include "header/utils.h"
-# include "header/structure.h"
-# include "minilibx-linux/mlx.h"
-
-
-
-
-#endif
+	j = 0;
+	while (map[j])
+	{
+		i = 0;
+		while (map[j][i])
+		{
+			if (map[j][i] == ' ')
+				map[j][i] = '1';
+			i++;
+		}
+		j++;
+	}
+}

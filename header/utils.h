@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:17:57 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/08 11:44:07 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/30 12:39:59 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,39 @@ int		error_message(char *str);
 int		error_message_bis(char *str, char *str2);
 //  --- error_mesage.c --- //
 
-//	---close_all_fd.c --- //
+//	--- close_all_fd.c --- //
 void	close_all_fd(t_info *info);
 void	close_fd(int *fd);
-//	---close_all_fd.c --- //
+//	--- close_all_fd.c --- //
 
-//	---init_fd.c --- ///
-void	init_info(t_info *info);
-int	    open_fd(int *fd, char *str);
-//	---init_fd.c --- ///
+//	--- init.c --- //
+int		init_info(t_info *info);                            
+int		open_fd(int *fd, char *str);
+int	    init_text(t_text *side, void *mlx, char *str);
+//	--- init_fd.c --- //
+
+//  --- close_mlx.c --- //
+void	close_mlx(t_info *info);
+//  --- close_mlx.c --- //
+
+//  --- skip_white.c --- //
+int	    skip_white(char *str, int i);
+//  --- skip_white.c --- //
+
+//  --- free_text.c --- //
+void    free_texture(t_info *info);
+//  --- free_text.c --- //
+
+//  --- free_linked_list.c --- //
+void    free_node(t_link_map *node);
+//  --- free_linked_list.c --- //
+
+//  --- free_clean.c --- //
+void	free_clean(t_info* info);
+//  --- free_clean.c --- //
+
+//  --- skip_empty_line.c --- //
+char	*skip_empty_line(t_info *info);
+//  --- skip_empty_line.c --- //
 
 #endif

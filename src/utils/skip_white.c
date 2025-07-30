@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   skip_white.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 11:48:59 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:07:11 by sle-nogu         ###   ########.fr       */
+/*   Created: 2025/07/24 21:04:25 by sle-nogu          #+#    #+#             */
+/*   Updated: 2025/07/24 21:14:45 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../cub3d.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-# include "header/parsing.h"
-# include "header/utils.h"
-# include "header/structure.h"
-# include "minilibx-linux/mlx.h"
-
-
-
-
-#endif
+int	skip_white(char *str, int i)
+{
+	while (str[i] == ' ')
+		i++;
+	return (i);
+}

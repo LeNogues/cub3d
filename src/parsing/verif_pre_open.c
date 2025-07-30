@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:03:16 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/06 13:47:44 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/26 10:25:47 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	end_with_cub(char *argv)
 		return (error_message("wrong extension: need .cub\n"));
 	while (argv[i])
 		i++;
-	if ((*(int*)&argv[i - 4]) == (*(int*)".cub"))
+	if ((*(int *)&argv[i - 4]) == (*(int *)".cub"))
 		return (1);
 	return (error_message("wrong extension: need .cub\n"));
 }
