@@ -6,20 +6,16 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 17:39:32 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:38:02 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/30 17:05:28 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int	side(char c, int nb_pos)
+static int	side(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-	{
-		if (nb_pos != 0)
-			return (-1);
 		return (1);
-	}
 	return (0);
 }
 
@@ -53,11 +49,9 @@ int	map_is_closed(char **map)
 		i = 0;
 		while (map[j][i])
 		{
-			if (side(map[j][i], nb_pos))
+			if (side(map[j][i]))
 				nb_pos++;
-			else if (side(map[j][i], nb_pos) == -1)
-				return (0);
-			if ((map[j][i] == '0' || side(map[j][i], 0)) && !border(map, i, j))
+			if ((map[j][i] == '0' || side(map[j][i])) && !border(map, i, j))
 				return (0);
 			i++;
 		}

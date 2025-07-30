@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:02:14 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:41:36 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/30 16:35:04 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "structure.h"
 
 //  ---parsing.c --- //
-int	parsing(int argc, char **argv, t_info *info);
+int	parsing(int argc, char **argv, t_cub *info);
 //  ---parsing.c --- //
 
 //  --- verif_pre_open.c --- //
@@ -26,23 +26,23 @@ int	end_with_cub(char *argv);
 //  ---verif_pre_open.c --- //
 
 //  --- open_file.c --- //
-int	open_file(char *path, t_info *info);
+int	open_file(char *path, t_cub *info);
 //  --- open_file.c --- //
 
 //  --- file_is_valid.c --- //
-int	file_is_valid(t_info *info);
+int	file_is_valid(t_cub *info);
 //  --- file_is_valid.c --- //
 
 //  --- line_is_valid.c --- //
-int	setup_valid(t_info *info);
+int	setup_valid(t_cub *info);
 //  --- line_is_valid.c --- //
 
 //  --- get_color.c --- //
-int	get_color(t_info *info, char *str);
+int	get_color_pars(t_cub *info, char *str);
 //  --- get_color.c --- //
 
 //  --- parse_map.c --- //
-int parse_map(t_info *info, t_map *map);
+int parse_map(t_cub *info, t_map *map);
 //  --- parse_map.c --- //
 
 //  --- map_is_closed.c --- //
@@ -54,11 +54,11 @@ int reverse_map(t_map *map_struct, char **map_origin);
 //  --- reverse_map.c --- //
 
 //  --- fill_with_one.c --- //
-void    fill_with_one(char **map);
+void    fill_with_one(char **map, t_map *map_info);
 //  --- fill_with_one.c --- //
 
 //  --- get_pos_player.c --- //
-void    get_pos_player(t_info *info, char **map);
+void    get_pos_player(t_cub *info, char **map);
 //  --- get_pos_player.c --- //
 
 //  --- add_map_line.c --- //

@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 19:43:26 by seb               #+#    #+#             */
-/*   Updated: 2025/07/30 12:41:09 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/30 14:04:14 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	transfer_list_to_map(t_map *map, t_link_map *head)
 	return (1);
 }
 
-static int	read_map_to_list(t_info *info, t_map *map, t_link_map **head)
+static int	read_map_to_list(t_cub *info, t_map *map, t_link_map **head)
 {
 	t_link_map	*current;
 
@@ -88,7 +88,7 @@ static int	read_map_to_list(t_info *info, t_map *map, t_link_map **head)
 	return (1);
 }
 
-int	parse_map(t_info *info, t_map *map)
+int	parse_map(t_cub *info, t_map *map)
 {
 	t_link_map	*head;
 

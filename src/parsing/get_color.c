@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 21:08:19 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/29 19:01:23 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/30 14:12:12 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	convert_rgb_to_int(int *color, char *str)
 	return (1);
 }
 
-int	get_color(t_info *info, char *str)
+int	get_color_pars(t_cub *info, char *str)
 {
 	int	i;
 	int	result;

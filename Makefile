@@ -26,7 +26,15 @@ SRC=    src/main.c \
 		src/utils/free_texture.c \
 		src/utils/free_linked_list.c \
 		src/utils/free_clean.c \
-		src/utils/skip_empty_line.c
+		src/utils/skip_empty_line.c \
+		src/exec/cleaners.c \
+		src/exec/events.c \
+		src/exec/init.c \
+		src/exec/keyboard_events.c \
+		src/exec/raycasting.c \
+		src/exec/render.c \
+		src/exec/vectors.c \
+		src/exec/wasd_movements.c
 	
 OBJ_DIR=obj
 OBJS=$(SRC:%.c=$(OBJ_DIR)/%.o)

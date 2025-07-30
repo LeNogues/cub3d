@@ -6,13 +6,13 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 19:02:33 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 11:54:24 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/30 14:12:18 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int	setup_valid(t_info *info)
+int	setup_valid(t_cub *info)
 {
 	int		result;
 
@@ -31,7 +31,7 @@ int	setup_valid(t_info *info)
 		else if (info->str[0] == 'E' && info->str[1] == 'A')
 			result = init_text(info->east, info->mlx, info->str + 2);
 		else
-			result = get_color(info, info->str);
+			result = get_color_pars(info, info->str);
 		if ((result == 0 && info->str[0] != '\n') || result == -1)
 			return (free(info->str), 0);
 		else if (result == 2)

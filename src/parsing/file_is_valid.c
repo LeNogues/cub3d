@@ -6,13 +6,13 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 19:01:15 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/24 21:12:00 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/30 14:03:40 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int	file_is_valid(t_info *info)
+int	file_is_valid(t_cub *info)
 {
 	if (!setup_valid(info))
 	{

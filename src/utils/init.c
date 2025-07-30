@@ -6,7 +6,7 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 20:13:02 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:10:20 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/30 17:52:39 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ int	open_fd(int *fd, char *str)
 	return (1);
 }
 
-int	init_mlx(t_info *info)
+int	init_mlx(t_cub *info)
 {
 	info->map->map = NULL;
 	info->mlx = mlx_init();
 	if (info->mlx == NULL)
 		return (0);
-	info->win = mlx_new_window(info->mlx, 1000, 800, "cub3d null");
-	if (info->win == NULL)
+	info->mlx_win = mlx_new_window(info->mlx, 1000, 800, "cub3d null");
+	if (info->mlx_win == NULL)
 		return (free(info->mlx), 0);
 	return (1);
 }
 
-int	init_info(t_info *info)
+int	init_cub(t_cub *info)
 {
 	info->fd_map = -1;
 	info->color_ceilling = -1;
@@ -83,6 +83,10 @@ int	init_text(t_text *side, void *mlx, char *str)
 			&side->img_height);
 	if (!side->img_ptr)
 		return (free(str_final), -1);
+	side->addr = mlx_get_data_addr(side->img_ptr, &side->bpx, &side->ln_len,
+			&side->endn);
+	if (!side->addr)
+		return (free(str_final), mlx_destroy_image(mlx, side->img_ptr), -1);
 	free(str_final);
 	return (1);
 }

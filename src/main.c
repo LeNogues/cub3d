@@ -6,30 +6,50 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 11:48:42 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:38:35 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/30 16:29:25 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+int	init(t_cub *cub)
+{
+	cub->img.img = mlx_new_image(cub->mlx, WIN_W, WIN_H);
+	if (!cub->img.img)
+		return (error(cub));
+	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bpx,
+			&cub->img.ln_len, &cub->img.endn);
+	if (!cub->img.addr)
+		return (error(cub));
+	init_keyboard_funcs(cub);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
-	t_info	*info;
+	t_cub	*info;
 	int		i;
+	int 	row;
 
 	i = 0;
-	info = malloc(sizeof(t_info));
+	row = 0;
+	info = malloc(sizeof(t_cub));
 	if (!info)
 		return (0);
-	if (!init_info(info))
+	if (!init_cub(info))
 		return (free(info), 0);
 	if (!parsing(argc, argv, info))
 		return (free_clean(info), 0);
-	while (info->map->map[i])
+	while(info->map->map[row])
 	{
-		printf("%s", info->map->map[i]);
-		i++;
+		printf("%s", info->map->map[row]);
+		row++;
 	}
+	printf("%f\n", info->px);
+	init(info);
+	new_frame(info);
+	set_hooks(info);
+	mlx_loop(info->mlx);
 	free_clean(info);
 	return (1);
 }

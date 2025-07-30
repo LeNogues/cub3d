@@ -6,20 +6,22 @@
 /*   By: sle-nogu <sle-nogu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:23:03 by sle-nogu          #+#    #+#             */
-/*   Updated: 2025/07/30 12:08:20 by sle-nogu         ###   ########.fr       */
+/*   Updated: 2025/07/30 17:19:08 by sle-nogu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	fill_with_one(char **map)
+#include "../cub3d.h"
+
+void	fill_with_one(char **map, t_map *map_info)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	j = 0;
-	while (map[j])
+	while (j < map_info->map_height - 1)
 	{
 		i = 0;
-		while (map[j][i])
+		while (map[j][i] != 0)
 		{
 			if (map[j][i] == ' ')
 				map[j][i] = '1';
